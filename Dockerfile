@@ -3,6 +3,7 @@ FROM fedora:21
 MAINTAINER Yury Kavaliou <test@test.com>
 
 RUN yum install -y java
+RUN yum install -y tar
 # Download version 1.4.2 of logstash
 RUN cd /tmp 
 RUN curl -O https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz
