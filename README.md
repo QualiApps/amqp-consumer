@@ -1,6 +1,6 @@
 AMQP consumer
 ==============
-Logstash as a consumer
+Logstash as a consumer (input - RabbitMQ, output - ElasticSearch)
 
 Installation
 --------------
