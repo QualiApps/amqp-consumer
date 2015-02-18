@@ -1,17 +1,26 @@
+#Logstash version 1.4.2
+
 FROM fedora:21
 
-MAINTAINER Yury Kavaliou <test@test.com>
+MAINTAINER Yury Kavaliou <Yury_Kavaliou@epam.com>
 
 RUN yum install -y java
 RUN yum install -y tar
-# Download version 1.4.2 of logstash
-RUN cd /tmp 
-RUN curl -O https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz
-RUN tar -xzvf ./logstash-1.4.2.tar.gz
-RUN mv ./logstash-1.4.2 /opt/logstash
-RUN rm ./logstash-1.4.2.tar.gz
 
-ADD start-consumer.sh /usr/local/sbin/start-consumer.sh
+ENV LOGSTASH_VERSION 1.4.2
+
+WORKDIR /tmp
+RUN curl -O https://download.elasticsearch.org/logstash/logstash/logstash-$LOGSTASH_VERSION.tar.gz
+RUN tar -xzvf ./logstash-$LOGSTASH_VERSION.tar.gz
+RUN mv ./logstash-$LOGSTASH_VERSION /opt/logstash
+RUN rm ./logstash-$LOGSTASH_VERSION.tar.gz
+
+WORKDIR /
+COPY start-consumer.sh /usr/local/sbin/start-consumer.sh
+RUN chmod 700 /usr/local/sbin/start-consumer.sh
 
 ENTRYPOINT ["/bin/bash", "/usr/local/sbin/start-consumer.sh"]
-CMD [""]
+
+VOLUME /var/log
+VOLUME /var/run
+
