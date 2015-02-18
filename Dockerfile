@@ -16,10 +16,10 @@ RUN mv ./logstash-$LOGSTASH_VERSION /opt/logstash
 RUN rm ./logstash-$LOGSTASH_VERSION.tar.gz
 
 WORKDIR /
-COPY start-consumer.sh /usr/local/sbin/start-consumer.sh
-RUN chmod 700 /usr/local/sbin/start-consumer.sh
+COPY logstash_start.sh /usr/local/sbin/logstash_start.sh
+RUN chmod 700 /usr/local/sbin/logstash_start.sh
 
-ENTRYPOINT ["/bin/bash", "/usr/local/sbin/start-consumer.sh"]
+ENTRYPOINT ["/bin/bash", "/usr/local/sbin/logstash_start.sh"]
 
 VOLUME /var/log
 VOLUME /var/run

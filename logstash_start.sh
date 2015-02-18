@@ -28,6 +28,5 @@ cat > ${LOGSTASH_PATH}/consume.conf <<EOF
     }
 EOF
 
-${LOGSTASH_PATH}/bin/logstash -f ${LOGSTASH_PATH}/consume.conf
+${LOGSTASH_PATH}/bin/logstash -f ${LOGSTASH_PATH}/consume.conf $@
 
-exec "$@"
