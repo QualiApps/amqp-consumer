@@ -4,15 +4,15 @@ FROM fedora:21
 
 MAINTAINER Yury Kavaliou <Yury_Kavaliou@epam.com>
 
-RUN yum install -y java
-RUN yum install -y tar
-
 ENV LOGSTASH_VERSION 1.4.2
+
+RUN yum install -y java \
+    tar
 
 WORKDIR /tmp
 RUN curl -O https://download.elasticsearch.org/logstash/logstash/logstash-$LOGSTASH_VERSION.tar.gz
 RUN tar -xzvf ./logstash-$LOGSTASH_VERSION.tar.gz
-RUN mv ./logstash-$LOGSTASH_VERSION /opt/logstash
+RUN mv ./logstash-$LOGSTASH_VERSION /opt/logstash \
 RUN rm ./logstash-$LOGSTASH_VERSION.tar.gz
 
 WORKDIR /

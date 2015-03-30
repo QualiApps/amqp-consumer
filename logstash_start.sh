@@ -19,7 +19,6 @@ cat > ${LOGSTASH_PATH}/consume.conf <<EOF
             vhost => "$RMQ_VHOST"
         }
     }
-
     output {
         elasticsearch {
             host => "db"
