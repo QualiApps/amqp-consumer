@@ -14,7 +14,7 @@ ADD https://download.elasticsearch.org/logstash/logstash/logstash-$LOGSTASH_VERS
 
 RUN tar xzf logstash.tar.gz \
     && mv logstash-$LOGSTASH_VERSION /opt/logstash \
-    && rm logstash-$LOGSTASH_VERSION.tar.gz
+    && rm logstash.tar.gz
 
 WORKDIR /
 COPY logstash_start.sh /usr/local/sbin/logstash_start.sh
