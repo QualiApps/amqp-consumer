@@ -10,10 +10,11 @@ RUN yum install -y java \
     tar
 
 WORKDIR /tmp
-RUN curl -O https://download.elasticsearch.org/logstash/logstash/logstash-$LOGSTASH_VERSION.tar.gz
-RUN tar -xzvf ./logstash-$LOGSTASH_VERSION.tar.gz
-RUN mv ./logstash-$LOGSTASH_VERSION /opt/logstash \
-RUN rm ./logstash-$LOGSTASH_VERSION.tar.gz
+ADD https://download.elasticsearch.org/logstash/logstash/logstash-$LOGSTASH_VERSION.tar.gz logstash.tar.gz
+
+RUN tar xzf logstash.tar.gz \
+    && mv logstash-$LOGSTASH_VERSION /opt/logstash \
+    && rm logstash-$LOGSTASH_VERSION.tar.gz
 
 WORKDIR /
 COPY logstash_start.sh /usr/local/sbin/logstash_start.sh
