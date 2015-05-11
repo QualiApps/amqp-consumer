@@ -22,7 +22,7 @@ cat > ${LOGSTASH_PATH}/consume.conf <<EOF
     output {
         elasticsearch {
             host => "db"
-            protocol => $ES_PROTOCOL
+            protocol => "$ES_PROTOCOL"
             port => $ES_PORT
             index => "$ES_INDEX"
         }
