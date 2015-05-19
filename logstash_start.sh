@@ -8,8 +8,8 @@ cat > ${LOGSTASH_PATH}/consume.conf <<EOF
         rabbitmq {
             ack => true
             durable => true
-            host => "feed"
-            port => $FEED_PORT_5672_TCP_PORT
+            host => "${FEED_NAME:-feed}"
+            port => ${FEED_PORT:-5672}
             user => "$RMQ_USER"
             password => "$RMQ_PASS"
             exchange => "$RMQ_EXCHANGE"
@@ -21,7 +21,7 @@ cat > ${LOGSTASH_PATH}/consume.conf <<EOF
     }
     output {
         elasticsearch {
-            host => "db"
+            host => "${ES_NAME:-db}"
             protocol => "$ES_PROTOCOL"
             port => $ES_PORT
             index => "$ES_INDEX"
