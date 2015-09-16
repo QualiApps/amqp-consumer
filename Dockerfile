@@ -1,10 +1,10 @@
-#Logstash version 1.4.2
+#Logstash version 1.5.4
 
 FROM fedora:21
 
 MAINTAINER Yury Kavaliou <Yury_Kavaliou@epam.com>
 
-ENV LOGSTASH_VERSION 1.4.2
+ENV LOGSTASH_VERSION 1.5.4
 
 RUN yum install -y java \
     tar
@@ -24,4 +24,3 @@ ENTRYPOINT ["/bin/bash", "/usr/local/sbin/logstash_start.sh"]
 
 VOLUME /var/log
 VOLUME /var/run
-
